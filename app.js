@@ -10,7 +10,7 @@ var port = process.env.PORT || 4242;
 // Config
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-app.use(express.static(path.join(application_root, "../git-bm")));
+app.use(express.static(path.join(application_root, "../../git-bm")));
 
 // API
 app.get('/api', function (req, res) {
@@ -65,10 +65,10 @@ app.get('/*', function (req,res) {
     var fileExt = req.originalUrl.split('.').pop();
     if(("js" === fileExt) || ("htm" === fileExt) || ("html" === fileExt)) {
         console.log(" --> file ");
-        res.sendFile(path.resolve(path.join(application_root, "../bm")));
+        res.sendFile(path.resolve(path.join(application_root, "../../bm")));
     } else {
         console.log(" --> resolve ");
-        res.sendFile(path.resolve(path.join(application_root, "../bm"), path.join(application_root, "../bm/index.html")));
+        res.sendFile(path.resolve(path.join(application_root, "../../bm"), path.join(application_root, "../../bm/index.html")));
     }
     console.log("\n");
 });
