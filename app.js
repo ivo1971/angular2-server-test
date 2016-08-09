@@ -38,6 +38,7 @@ app.get('/api/processGroups', function (req, res) {
         ];
         var resData = {data: resGroups};
         res.json(resData);
+        res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
     }
 })
 
@@ -65,10 +66,10 @@ app.get('/*', function (req,res) {
     var fileExt = req.originalUrl.split('.').pop();
     if(("js" === fileExt) || ("htm" === fileExt) || ("html" === fileExt)) {
         console.log(" --> file ");
-        res.sendFile(path.resolve(path.join(application_root, "../../bm")));
+        res.sendFile(path.resolve(path.join(application_root, "../../git-bm")));
     } else {
         console.log(" --> resolve ");
-        res.sendFile(path.resolve(path.join(application_root, "../../bm"), path.join(application_root, "../../bm/index.html")));
+        res.sendFile(path.resolve(path.join(application_root, "../../git-bm"), path.join(application_root, "../../git-bm/index.html")));
     }
     console.log("\n");
 });
